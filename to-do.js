@@ -26,7 +26,7 @@ const logTodos = () => {
 const populateTodos = () => {
  //console.log('arrayOfTodos:', arrayOfTodos)
  arrayOfTodos.forEach (todo => {
-    //todo is just referencing the arrayOfTodos.forEaach could be named anything
+    //todo is just referencing the arrayOfTodos.forEach could be named anything
     let newListItem = document.createElement('LI')
     // creating LI element
     let text = document.createTextNode(todo.title)
@@ -37,4 +37,10 @@ const populateTodos = () => {
     //putting the LI in the OL ***line 34 and 36 the order is important
  })
  
+}
+
+let isComplete = () => {
+  arrayOfTodos.filter (todo => {
+   return todo.title.charAt(0) !== 'q'  
+  })
 }
