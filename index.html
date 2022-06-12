@@ -10,9 +10,18 @@
     <button onclick="fetchTodos()">Fetch Todos</button>
     <button onclick="logTodos()">Log Todos</button>
     <button onclick="populateTodos()">Populate Todos</button>
+    <label for="quantity">Number</label>
+    <input value="" onkeyup="setValueOf_User_ID(this.value)" type="number" name="quantity" min="1" max="10">
+    <button onclick="sortTodos()">Sort</button>
+    <h1>Completed</h1>
     <ol id="todo-list">
-    <!-- LIs will go here -->
+        <!-- LIs will go here -->
+        </ol>
+    <h1>Not Completed</h1>    
+    <ol id="todo-list2">
+        
     </ol>
     <script src="./to-do.js"></script>
+    
 </body>
 </html>

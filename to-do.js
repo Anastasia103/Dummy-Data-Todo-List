@@ -1,4 +1,14 @@
 let toDoList = document.getElementById("todo-list")
+let toDoList2 = document.getElementById("todo-list2")
+
+let quantityId;
+
+function setValueOf_User_ID(input) {
+ quantityId = parseInt(input)
+ console.log ({quantityId})
+}
+
+
 let arrayOfTodos = [
     {
     "userId": 14,
@@ -21,6 +31,8 @@ const fetchTodos = () => {
 
 const logTodos = () => {
     console.log(arrayOfTodos)
+
+    console.log(isCompleteFilter)
 }
 
 const populateTodos = () => {
@@ -29,18 +41,54 @@ const populateTodos = () => {
     //todo is just referencing the arrayOfTodos.forEach could be named anything
     let newListItem = document.createElement('LI')
     // creating LI element
-    let text = document.createTextNode(todo.title)
+    let text = document.createTextNode(todo.id)
     //creating text which is inserted with the data in the json (todo is referencing the todo on line 28)
     newListItem.appendChild(text)
     //putting the text in the LI
     toDoList.appendChild(newListItem)
     //putting the LI in the OL ***line 34 and 36 the order is important
+    
+
  })
  
 }
 
-let isComplete = () => {
-  arrayOfTodos.filter (todo => {
-   return todo.title.charAt(0) !== 'q'  
-  })
+
+
+const sortTodos = () => {
+    const list = document.getElementById("todo-list");
+
+   while (list.hasChildNodes()) {
+  list.removeChild(list.firstChild);
+}
+const list2 = document.getElementById("todo-list2");
+
+   while (list2.hasChildNodes()) {
+  list2.removeChild(list2.firstChild);
+}
+    let isCompleteFilter = arrayOfTodos.filter(todo => {
+        return todo.userId === quantityId
+    })
+    isCompleteFilter.forEach (todo => {
+  
+    let newListItem = document.createElement('LI')
+    // creating LI element
+    let text = document.createTextNode(todo.title)
+    //creating text which is inserted with the data in the json (todo is referencing the todo on line 28)
+    newListItem.appendChild(text)
+    //putting the text in the LI
+    if (todo.completed === true) {
+    //putting the text in the LI
+    toDoList.appendChild(newListItem)
+    //putting the LI in the OL ***line 34 and 36 the order is important
+    }
+    else {
+    //putting the text in the LI
+        toDoList2.appendChild(newListItem)
+    }
+    console.log('isCompleteFilter:', isCompleteFilter)
+    
+    console.log('quantityID', quantityId)
+})
+    
 }
